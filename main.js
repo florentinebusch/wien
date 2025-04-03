@@ -28,7 +28,7 @@ L.control.layers({
     "BasemapAT Orthofoto": L.tileLayer.provider('BasemapAT.orthofoto').addTo(map),
     "BasemapAT Relief": L.tileLayer.provider('BasemapAT.terrain').addTo(map),
     "BasemapAT Oberfläche": L.tileLayer.provider('BasemapAT.surface').addTo(map),
-}, { 
+}, {
     "Sehenswürdigkeiten": overlays.sights,
     "Vienna Sightseeing Linien": overlays.lines,
     "Vienna Sightseeing Haltestellen": overlays.stops,
@@ -41,7 +41,7 @@ L.control.scale({
 }).addTo(map);
 
 // Sehenswürdigkeiten, Linien, Bushaltestopps und Fußgängerzonen am Standort Wien
-async function loadSights (url) {
+async function loadSights(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
@@ -51,7 +51,7 @@ async function loadSights (url) {
     }).addTo(overlays.sights);
 }
 
-async function loadLines (url) {
+async function loadLines(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
@@ -61,7 +61,7 @@ async function loadLines (url) {
     }).addTo(overlays.lines);
 }
 
-async function loadStops (url) {
+async function loadStops(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
@@ -71,7 +71,7 @@ async function loadStops (url) {
     }).addTo(overlays.stops);
 }
 
-async function loadZones (url) {
+async function loadZones(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
