@@ -17,10 +17,6 @@ L.tileLayer('https://mapsneu.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{
     attribution: 'Hintergrundkarte: <a href="https://www.basemap.at">basemap.at</a>'
 }).addTo(map);
 
-// Marker mit Popup beim Stephansdom
-let marker = L.marker([stephansdom.lat, stephansdom.lng]).addTo(map);
-marker.bindPopup(stephansdom.title).openPopup();
-
 // Maßstab
 L.control.scale({
     imperial: false,
@@ -37,8 +33,6 @@ async function loadSights (url) {
     }).addTo(map);
 }
 
-loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
-
 async function loadLines (url) {
     console.log(url);
     let response = await fetch(url);
@@ -48,8 +42,6 @@ async function loadLines (url) {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>"
     }).addTo(map);
 }
-
-loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 async function loadStops (url) {
     console.log(url);
@@ -61,8 +53,6 @@ async function loadStops (url) {
     }).addTo(map);
 }
 
-loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
-
 async function loadZones (url) {
     console.log(url);
     let response = await fetch(url);
@@ -73,4 +63,8 @@ async function loadZones (url) {
     }).addTo(map);
 }
 
+// GeoJSON laden und visualisieren
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
