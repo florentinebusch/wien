@@ -10,7 +10,7 @@ let stephansdom = {
 
 // Karte initialisieren
 let map = L.map("map", {
-    maxZoom: 19 
+    maxZoom: 19
 }).setView([stephansdom.lat, stephansdom.lng], stephansdom.zoom);
 
 // Overlays definieren
@@ -61,8 +61,8 @@ async function loadSights(url) {
                     iconAnchor: [16, 37]
                 })
             });
-        }, 
-        onEachFeature: function(feature, layer) {
+        },
+        onEachFeature: function (feature, layer) {
             //console.log(feature.properties)
             layer.bindPopup(`
                 <img src="${feature.properties.THUMBNAIL}" alt"*">
