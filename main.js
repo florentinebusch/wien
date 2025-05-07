@@ -107,10 +107,10 @@ async function loadLines(url) {
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties)
             layer.bindPopup(`
-                <h4>icon ${feature.properties.LINE_NAME}</h4>
-                <p>icon ${feature.properties.FROM_NAME}</p>
-                <p>Icon</p>
-                <p>icon ${feature.properties.TO_NAME}</p>
+                <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
+                <p><i class="fa-regular fa-circle-stop"></i> ${feature.properties.FROM_NAME}</p>
+                <p><i class="fa-solid fa-down-long"></i></p>
+                <p><i class="fa-regular fa-circle-stop"></i> ${feature.properties.TO_NAME}</p>
                 `);
         }
     }).addTo(overlays.lines);
@@ -137,7 +137,7 @@ async function loadStops(url) {
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties)
             layer.bindPopup(`
-                <h4>Icon ${feature.properties.LINE_NAME}</h4>
+                <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
                 <p>${feature.properties.STAT_ID} ${feature.properties.STAT_NAME}</p>
                 `);
         }
@@ -164,8 +164,8 @@ async function loadZones(url) {
             //console.log(feature.properties)
             layer.bindPopup(`
                 <h4>Fußgängerzone ${feature.properties.ADRESSE}</h4>
-                <p>icon ${feature.properties.ZEITRAUM}</p>
-                <p>icon ${feature.properties.AUSN_TEXT}</p>
+                <p><i class="fa-light fa-clock"></i> ${feature.properties.ZEITRAUM}</p>
+                <p><i class="fa-solid fa-circle-info"></i> ${feature.properties.AUSN_TEXT}</p>
                 `);
         }
     }).addTo(overlays.zones);
