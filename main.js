@@ -48,10 +48,10 @@ L.control.scale({
 
 // Sehenswürdigkeiten, Linien, Bushaltestopps und Fußgängerzonen am Standort Wien
 async function loadSights(url) {
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-    console.log(jsondata);
+    //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
@@ -75,14 +75,14 @@ async function loadSights(url) {
 }
 
 async function loadLines(url) {
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-    console.log(jsondata);
+    //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         style: function (feature) {
-            console.log(feature.properties.LINE_NAME);
+            //console.log(feature.properties.LINE_NAME);
             let lineColor;
 
             if (feature.properties.LINE_NAME == "Yellow Line") {
@@ -124,7 +124,7 @@ async function loadStops(url) {
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
-            console.log(feature.properties.LINE_ID);
+            //console.log(feature.properties.LINE_ID);
 
             return L.marker(latlng, {
                 icon: L.icon({
@@ -152,7 +152,7 @@ async function loadZones(url) {
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         style: function (feature) {
-            console.log(feature)
+            //console.log(feature)
             return {
                 color: "#F012BE",
                 weight: 1,
@@ -175,7 +175,7 @@ async function loadHotels(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-    console.log(jsondata);
+    //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
@@ -204,6 +204,18 @@ async function loadHotels(url) {
                     popupAnchor: [0, -37]
                 })
             });
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties)
+            layer.bindPopup(`
+                <h4>${feature.properties.NAME}</h4>
+                <h5>Hotel ${feature.properties.KATEGORIE_TXT}</h5>
+                <h4>______________________</h4>
+                <h4>Addr.: ${feature.properties.ADRESSE}</h4>
+                <h4>Tel.: <a href= "${feature.properties.TEL}"</a></h4>
+                <h4><a href= "${feature.properties.MAILTO}" target="wien">Website</a><h4>
+                <h4><a href= "${feature.properties.HOMEPAGE}" target="wien">Homepage</a><h4>
+                `);
         }
     }).addTo(overlays.hotels);
 }
