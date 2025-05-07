@@ -175,11 +175,11 @@ async function loadHotels(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-    //console.log(jsondata);
+    console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
-            //console.log(feature.properties.KATEGORIE_TXT);
+            console.log(feature.properties.KATEGORIE_TXT);
             let iconName;
 
             if (feature.properties.KATEGORIE_TXT == "1*") {
@@ -195,7 +195,7 @@ async function loadHotels(url) {
             } else {
                 iconName = "hotel_0stars.png";
             }
-            //console.log(iconName);
+            console.log(iconName);
 
             return L.marker(latlng, {
                 icon: L.icon({
@@ -206,15 +206,15 @@ async function loadHotels(url) {
             });
         },
         onEachFeature: function (feature, layer) {
-            //console.log(feature.properties)
+            console.log(feature.properties)
             layer.bindPopup(`
-                <h4>${feature.properties.NAME}</h4>
+                <h4>${feature.properties.BETRIEB}</h4>
                 <h5>Hotel ${feature.properties.KATEGORIE_TXT}</h5>
-                <h4>______________________</h4>
-                <h4>Addr.: ${feature.properties.ADRESSE}</h4>
-                <h4>Tel.: <a href= "${feature.properties.TEL}"</a></h4>
-                <h4><a href= "${feature.properties.MAILTO}" target="wien">Website</a><h4>
-                <h4><a href= "${feature.properties.HOMEPAGE}" target="wien">Homepage</a><h4>
+                <p>______________________</p>
+                <p>Addr.: ${feature.properties.ADRESSE}</h4>
+                <p>Tel.: <a href="tel:${feature.properties.KONTAKT_TE}">${feature.properties.KONTAKT_TE}</a></p>
+                <p> <a href="mailto:${feature.properties.KONTAKT_EM}">${feature.properties.KONTAKT_EM}</a></p>
+                <p> <a href= "${feature.properties.WEBLINK1}" target="hotels">Homepage</a></p>
                 `);
         }
     }).addTo(overlays.hotels);
