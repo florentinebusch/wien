@@ -107,10 +107,10 @@ async function loadLines(url) {
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties)
             layer.bindPopup(`
-                <h4>${feature.properties.LINE_NAME}</h4>
-                <h4>${feature.properties.FROM_NAME}</h4>
+                <h4>icon ${feature.properties.LINE_NAME}</h4>
+                <h4>icon ${feature.properties.FROM_NAME}</h4>
                 <h4>Icon</h4>
-                <h4>${feature.properties.TO_NAME}</h4>
+                <h4>icon ${feature.properties.TO_NAME}</h4>
                 `);
         }
     }).addTo(overlays.lines);
@@ -124,7 +124,7 @@ async function loadStops(url) {
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
-            //console.log(feature.properties.LINE_ID);
+            console.log(feature.properties.LINE_ID);
 
             return L.marker(latlng, {
                 icon: L.icon({
@@ -133,8 +133,15 @@ async function loadStops(url) {
                     popupAnchor: [0, -37]
                 })
             });
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties)
+            layer.bindPopup(`
+                <h4>Icon ${feature.properties.LINE_NAME}</h4>
+                <h4>${feature.properties.STAT_ID} ${feature.properties.STAT_NAME}</h4>
+                `);
         }
-    }).addTo(overlays.hotels);
+    }).addTo(overlays.stops);
 }
 
 async function loadZones(url) {
