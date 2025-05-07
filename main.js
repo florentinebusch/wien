@@ -210,8 +210,8 @@ async function loadHotels(url) {
             layer.bindPopup(`
                 <h4>${feature.properties.BETRIEB}</h4>
                 <h5>Hotel ${feature.properties.KATEGORIE_TXT}</h5>
-                <p>______________________</p>
-                <p>Addr.: ${feature.properties.ADRESSE}</h4>
+                <p>_________________________</p>
+                <address>Addr.: ${feature.properties.ADRESSE}</address>
                 <p>Tel.: <a href="tel:${feature.properties.KONTAKT_TE}">${feature.properties.KONTAKT_TE}</a></p>
                 <p> <a href="mailto:${feature.properties.KONTAKT_EM}">${feature.properties.KONTAKT_EM}</a></p>
                 <p> <a href= "${feature.properties.WEBLINK1}" target="hotels">Homepage</a></p>
@@ -226,5 +226,3 @@ loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&vers
 loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
-
-//Anmerkung: Schriftdicke muss noch geändert werden!
