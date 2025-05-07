@@ -108,9 +108,9 @@ async function loadLines(url) {
             //console.log(feature.properties)
             layer.bindPopup(`
                 <h4>icon ${feature.properties.LINE_NAME}</h4>
-                <h4>icon ${feature.properties.FROM_NAME}</h4>
-                <h4>Icon</h4>
-                <h4>icon ${feature.properties.TO_NAME}</h4>
+                <p>icon ${feature.properties.FROM_NAME}</p>
+                <p>Icon</p>
+                <p>icon ${feature.properties.TO_NAME}</p>
                 `);
         }
     }).addTo(overlays.lines);
@@ -138,7 +138,7 @@ async function loadStops(url) {
             //console.log(feature.properties)
             layer.bindPopup(`
                 <h4>Icon ${feature.properties.LINE_NAME}</h4>
-                <h4>${feature.properties.STAT_ID} ${feature.properties.STAT_NAME}</h4>
+                <p>${feature.properties.STAT_ID} ${feature.properties.STAT_NAME}</p>
                 `);
         }
     }).addTo(overlays.stops);
@@ -164,8 +164,8 @@ async function loadZones(url) {
             //console.log(feature.properties)
             layer.bindPopup(`
                 <h4>Fußgängerzone ${feature.properties.ADRESSE}</h4>
-                <h4>icon ${feature.properties.ZEITRAUM}</h4>
-                <h4>icon ${feature.properties.AUSN_TEXT}</h4>
+                <p>icon ${feature.properties.ZEITRAUM}</p>
+                <p>icon ${feature.properties.AUSN_TEXT}</p>
                 `);
         }
     }).addTo(overlays.zones);
