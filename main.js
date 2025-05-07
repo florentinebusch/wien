@@ -159,6 +159,14 @@ async function loadZones(url) {
                 opacity: 0.4,
                 fillOpacity: 0.1,
             }
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties)
+            layer.bindPopup(`
+                <h4>Fußgängerzone ${feature.properties.ADRESSE}</h4>
+                <h4>icon ${feature.properties.ZEITRAUM}</h4>
+                <h4>icon ${feature.properties.AUSN_TEXT}</h4>
+                `);
         }
     }).addTo(overlays.zones);
 }
@@ -206,3 +214,5 @@ loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&vers
 loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
+
+//Anmerkung: Schriftdicke muss noch geändert werden!
