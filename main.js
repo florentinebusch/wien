@@ -211,9 +211,9 @@ async function loadHotels(url) {
                 <h4>${feature.properties.BETRIEB}</h4>
                 <h5>Hotel ${feature.properties.KATEGORIE_TXT}</h5>
                 <p>_________________________</p>
-                <address>Addr.: ${feature.properties.ADRESSE}</address>
-                <p>Tel.: <a href="tel:${feature.properties.KONTAKT_TE}">${feature.properties.KONTAKT_TE}</a></p>
-                <p> <a href="mailto:${feature.properties.KONTAKT_EM}">${feature.properties.KONTAKT_EM}</a></p>
+                <p>Addr.: ${feature.properties.ADRESSE}</p>
+                <p>Tel.: <a href="tel:${feature.properties.KONTAKT_TEL}">${feature.properties.KONTAKT_TEL}</a></p>
+                <p> <a href="mailto:${feature.properties.KONTAKT_EMAIL}">${feature.properties.KONTAKT_EMAIL}</a></p>
                 <p> <a href= "${feature.properties.WEBLINK1}" target="hotels">Homepage</a></p>
                 `);
         }
