@@ -103,6 +103,15 @@ async function loadLines(url) {
             return {
                 color: lineColor
             }
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties)
+            layer.bindPopup(`
+                <h4>${feature.properties.LINE_NAME}</h4>
+                <h4>${feature.properties.FROM_NAME}</h4>
+                <h4>Icon</h4>
+                <h4>${feature.properties.TO_NAME}</h4>
+                `);
         }
     }).addTo(overlays.lines);
 }
